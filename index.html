@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>for zhoyya 🤍</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#4b0f1a,#7a1f2b,#c9a24d);
+  min-height:100vh;
+  color:#f6e6c1;
+  overflow:hidden;
+}
+
+.center{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.card{
+  background:rgba(20,5,8,0.85);
+  border:1px solid rgba(201,162,77,.5);
+  border-radius:30px;
+  padding:40px;
+  max-width:900px;
+  width:92%;
+  box-shadow:0 30px 70px rgba(0,0,0,.5);
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  color:#e6c97a;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.time{
+  background:rgba(201,162,77,.12);
+  border:1px solid rgba(201,162,77,.4);
+  border-radius:16px;
+  padding:14px 18px;
+  text-align:center;
+}
+
+.time h2{color:#e6c97a;font-size:1.6em}
+.time span{font-size:.7em;opacity:.7}
+
+.slide{
+  display:none;
+  align-items:center;
+  gap:40px;
+  animation:fade 1.5s ease;
+}
+
+.slide.active{display:flex}
+
+.text{
+  flex:1;
+  font-size:.95em;
+  line-height:1.8;
+}
+
+.photo{
+  flex:1;
+  display:flex;
+  justify-content:center;
+}
+
+.photo img{
+  width:260px;
+  height:360px;
+  object-fit:cover;
+  border-radius:22px;
+  padding:12px;
+  background:
+    linear-gradient(#c9a24d,#c9a24d) padding-box,
+    repeating-radial-gradient(circle at top left,#fff,#c9a24d 10%) border-box;
+  border:6px solid transparent;
+}
+
+.reverse{flex-direction:row-reverse}
+
+.final{
+  flex-direction:column;
+}
+
+.final img{
+  width:100%;
+  max-height:360px;
+}
+
+.final h2{
+  margin-top:18px;
+  font-family:'Playfair Display',serif;
+  color:#e6c97a;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="center">
+<div class="card" id="countPage">
+
+<h1>for zhoyya 🤍</h1>
+
+<div class="countdown">
+  <div class="time"><h2 id="d">0</h2><span>days</span></div>
+  <div class="time"><h2 id="h">0</h2><span>hours</span></div>
+  <div class="time"><h2 id="m">0</h2><span>minutes</span></div>
+  <div class="time"><h2 id="s">0</h2><span>seconds</span></div>
+</div>
+
+</div>
+</div>
+
+<div class="center" id="slides" style="display:none">
+<div class="card">
+
+<!-- SLIDE 1 -->
+<div class="slide active">
+  <div class="photo"><img src="slide1.jpg"></div>
+  <div class="text">
+    i never knew happiness could feel this warm until you came into my life.  
+    having you beside me feels like a quiet miracle i get to live every day.  
+    i am endlessly grateful for you, zhoyya ❤️
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide reverse">
+  <div class="photo"><img src="slide2.jpg"></div>
+  <div class="text">
+    loving you feels natural, effortless, and deeply real.  
+    i love you not only for who you are,  
+    but for how i become a better person when i am with you.  
+    my heart chooses you, always ❤️
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  <div class="photo"><img src="slide3.jpg"></div>
+  <div class="text">
+    from the very first moment i saw you,  
+    there was something about you that quietly stayed with me.  
+    your presence, your smile, your soul —  
+    i admired you before i even realized it ❤️
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide reverse">
+  <div class="photo"><img src="slide4.jpg"></div>
+  <div class="text">
+    thank you for standing beside me,  
+    for believing in me when i doubted myself,  
+    and for supporting me through every step.  
+    i am here today because of you, and i will always be thankful ❤️
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide final">
+  <img src="slide5.jpg">
+  <h2>our love forever ❤️</h2>
+</div>
+
+</div>
+</div>
+
+<script>
+// WIB target (14 feb 2026 00:00)
+const target = new Date("2026-02-13T17:00:00Z").getTime();
+
+function tick(){
+  const now = new Date().getTime();
+  const d = target - now;
+  if(d <= 0){
+    document.querySelector(".center").style.display="none";
+    document.getElementById("slides").style.display="flex";
+    startSlides();
+    return;
+  }
+  dEl.innerText=Math.floor(d/(1000*60*60*24));
+  hEl.innerText=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+  mEl.innerText=Math.floor((d%(1000*60*60))/(1000*60));
+  sEl.innerText=Math.floor((d%(1000*60))/1000);
+}
+
+const dEl=d,hEl=h,mEl=m,sEl=s;
+setInterval(tick,1000);
+tick();
+
+let index=0;
+function startSlides(){
+  const slides=document.querySelectorAll(".slide");
+  setInterval(()=>{
+    slides[index].classList.remove("active");
+    index=(index+1)%slides.length;
+    slides[index].classList.add("active");
+  },6000);
+}
+</script>
+
+</body>
+</html>
